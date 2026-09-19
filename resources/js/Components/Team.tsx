@@ -92,7 +92,7 @@ export function Team() {
                     {teamMembers.map((member) => (
                         <div
                             key={member.id}
-                            className="group relative rounded-2xl bg-neutral-900/50 border border-white/10 overflow-hidden flex flex-row items-stretch transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"
+                            className="group relative rounded-2xl liquid-glass-card bg-neutral-900/50 border border-white/10 overflow-hidden flex flex-row items-stretch transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"
                         >
                             {/* Photo Section */}
                             <div className="relative w-2/5 shrink-0 overflow-hidden">

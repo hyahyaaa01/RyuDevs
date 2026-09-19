@@ -99,27 +99,7 @@ export const Contact: React.FC = () => {
                                 className="h-6 w-auto object-contain"
                             />
                             <p className="text-neutral-400 text-sm">
-                                hello@pixeldrift.io
-                            </p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <img
-                                src="/Logos/home.png"
-                                alt="Address Icon"
-                                className="h-5 w-auto object-contain"
-                            />
-                            <p className="text-neutral-400 text-sm">
-                                912 Nova Street, Sector 14, Berlin
-                            </p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <img
-                                src="/Logos/phone.png"
-                                alt="Phone Icon"
-                                className="h-5 w-auto object-contain"
-                            />
-                            <p className="text-neutral-400 text-sm">
-                                +44 1234 567890
+                                ryudevelopers@gmail.com
                             </p>
                         </div>
                     </div>
