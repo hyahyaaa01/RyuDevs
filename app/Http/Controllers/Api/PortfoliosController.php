@@ -7,6 +7,7 @@ use App\Models\Portfolios;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PortfoliosController extends Controller
 {
@@ -24,7 +25,6 @@ class PortfoliosController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title'       => 'required|string|max:255',
-            'slug'        => 'required|string|max:255|unique:portfolios,slug',
             'description' => 'required|string',
             'thumbnail'   => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'project_url' => 'required|url',
@@ -47,7 +47,7 @@ class PortfoliosController extends Controller
 
         $portfolio = Portfolios::create([
             'title'       => $request->title,
-            'slug'        => $request->slug,
+            'slug'        => Str::slug($request->title),
             'description' => $request->description,
             'thumbnail'   => $thumbnailPath,
             'project_url' => $request->project_url,
