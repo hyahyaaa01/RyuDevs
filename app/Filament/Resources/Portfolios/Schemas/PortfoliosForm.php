@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TagsInput;
+use Illuminate\Support\Str;
 
 class PortfoliosForm
 {
@@ -17,10 +18,17 @@ class PortfoliosForm
             ->components([
                 TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                TagsInput::make('slug')
-                    ->required(),
+                TextInput::make('slug')
+                    ->required()
+                    ->maxLength(255)
+                    ->unique(table: 'portfolios', column: 'slug', ignoreRecord: true)
+                    ->validationMessages([
+                        'unique' => 'Slug ini sudah digunakan, silakan gunakan title/slug yang lain.',
+                    ]),
 
                 Textarea::make('description')
                     ->required()
