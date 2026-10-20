@@ -44,13 +44,15 @@ class TeamsController extends Controller
             ], 422);
         }
 
-        $team = Teams::create($request->all());
+        $data = $request->except('photo');
 
+        // Tangani upload file foto terlebih dahulu sebelum data disimpan
         if ($request->hasFile('photo')) {
-            $team->photo = $request->file('photo')->store('teams', 'public');
+            $data['photo'] = $request->file('photo')->store('teams', 'public');
         }
 
-        $team->save();
+        // Simpan data ke database beserta path foto yang sudah di-generate
+        $team = Teams::create($data);
 
         return response()->json([
             'success' => true,
