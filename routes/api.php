@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PortfoliosController;
 use App\Http\Controllers\Api\TeamsController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\AuthController;
 
 Route::get('/portfolios', [PortfoliosController::class, 'index']);
 Route::post('/portfolios', [PortfoliosController::class, 'store']);
@@ -21,3 +22,5 @@ Route::delete('/teams/{id}', [TeamsController::class, 'destroy']);
 
 Route::get('/review', [ReviewController::class, 'index']);
 Route::post('/review', [ReviewController::class, 'store']);
+
+Route::post('/login', [AuthController::class, 'login']);
