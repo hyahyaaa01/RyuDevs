@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Portfolio;
+use App\Models\Portfolios;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -13,7 +13,7 @@ class PortfoliosController extends Controller
 {
     public function index(): JsonResponse
     {
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolios::all();
         return response()->json([
             'success' => true,
             'message' => 'Portfolios retrieved successfully',
@@ -48,7 +48,7 @@ class PortfoliosController extends Controller
             $data['thumbnail'] = $request->file('thumbnail')->store('portfolios', 'public');
         }
 
-        $portfolio = Portfolio::create($data);
+        $portfolio = Portfolios::create($data);
 
         return response()->json([
             'success' => true,
@@ -59,7 +59,7 @@ class PortfoliosController extends Controller
 
     public function show($id): JsonResponse
     {
-        $portfolio = Portfolio::find($id);
+        $portfolio = Portfolios::find($id);
         if (!$portfolio) {
             return response()->json([
                 'success' => false,
@@ -76,7 +76,7 @@ class PortfoliosController extends Controller
 
     public function update(Request $request, $id): JsonResponse
     {
-        $portfolio = Portfolio::find($id);
+        $portfolio = Portfolios::find($id);
         if (!$portfolio) {
             return response()->json([
                 'success' => false,
@@ -123,7 +123,7 @@ class PortfoliosController extends Controller
 
     public function destroy($id): JsonResponse
     {
-        $portfolio = Portfolio::find($id);
+        $portfolio = Portfolios::find($id);
         if (!$portfolio) {
             return response()->json([
                 'success' => false,
