@@ -24,4 +24,33 @@ class ContactController extends Controller
             'data'    => $contact,
         ], 201);
     }
+
+    public function index()
+    {
+        $contacts = Contact::latest()->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $contacts
+        ]);
+    }
+
+    public function destroy($id)
+{
+    $contact = Contact::find($id);
+
+    if (!$contact) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Pesan tidak ditemukan'
+        ], 404);
+    }
+
+    $contact->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Pesan berhasil dihapus'
+    ]);
+}
 }
