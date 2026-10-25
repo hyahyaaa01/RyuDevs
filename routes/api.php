@@ -31,3 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
     
     Route::delete('/contacts/{id}', [ContactController::class, 'destroy']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [AuthController::class, 'userProfile']); // Mengambil data profil
+    Route::put('/user/update', [AuthController::class, 'updateProfile']); // Memperbarui profil
+});
