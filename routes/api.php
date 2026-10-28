@@ -19,7 +19,7 @@ Route::get('/teams', [TeamsController::class, 'index']);
 Route::post('/teams', [TeamsController::class, 'store']);
 Route::get('/teams/{id}', [TeamsController::class, 'show']);
 Route::post('/teams/{id}', [TeamsController::class, 'update']);
-Route::put('/teams/{id}', [TeamsController::class, 'update']); // <-- Tambahan untuk Teams PUT
+Route::put('/teams/{id}', [TeamsController::class, 'update']);
 Route::delete('/teams/{id}', [TeamsController::class, 'destroy']);
 
 Route::get('/review', [ReviewController::class, 'index']);
